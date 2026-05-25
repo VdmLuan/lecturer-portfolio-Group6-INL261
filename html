@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lecturer Portfolio</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">📚 Portfolio</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-avatar">👨‍🏫</div>
+    <h1>Dr. <span>Jane Doe</span></h1>
+    <p class="hero-subtitle">Senior Lecturer · Computer Science · 15+ Years Experience</p>
+    <div class="hero-tags">
+      <span class="tag">JavaScript</span>
+      <span class="tag">Web Development</span>
+      <span class="tag">AI & ML</span>
+      <span class="tag">Databases</span>
+      <span class="tag">Agile</span>
+    </div>
+    <a href="#career" class="btn">Explore Career</a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title reveal">Technical <span>Skills</span></h2>
+  <div class="skills-grid reveal">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section id="career">
+  <h2 class="section-title reveal">Career <span>Journey</span></h2>
+  <div class="filter-tabs reveal" id="filterTabs">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="education">Education</button>
+    <button class="filter-btn" data-filter="industry">Industry</button>
+    <button class="filter-btn" data-filter="academia">Academia</button>
+  </div>
+  <div class="timeline reveal" id="timeline"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title reveal">Get In <span>Touch</span></h2>
+  <p style="text-align:center;color:var(--muted);max-width:500px;margin:0 auto" class="reveal">
+    Have a question or want to collaborate? Use the chat widget below or reach out directly.
+  </p>
+</section>
+
+<!-- CHAT WIDGET -->
+<button id="chat-toggle" title="Chat with the Lecturer">💬</button>
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">👩‍🏫</div>
+    <div class="chat-header-info">
+      <h4>Dr. Jane Doe</h4>
+      <p>Ask me about my career &amp; advice</p>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="quick-chips" id="quickChips">
+    <span class="chip">📚 Your qualifications?</span>
+    <span class="chip">💡 Career advice?</span>
+    <span class="chip">🔭 Current research?</span>
+    <span class="chip">🛠️ Tech stack?</span>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask the lecturer anything…"/>
+    <button id="chat-send">➤</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
