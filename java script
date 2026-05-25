@@ -1,0 +1,196 @@
+// ── DATA (swap with real lecturer info) ──
+const LECTURER = {
+  name: "Dr. Jane Doe",
+  title: "Senior Lecturer, Computer Science",
+  institution: "University of Technology",
+  bio: "I have over 15 years of experience in academia and industry, specialising in web technologies, AI, and software engineering. My passion is helping students bridge theory and real-world practice.",
+  qualifications: "BSc Computer Science (Wits), MSc Software Engineering (UCT), PhD Human-Computer Interaction (UP)",
+  research: "Currently researching AI-assisted learning tools and accessibility in EdTech.",
+  techStack: "JavaScript, Python, React, Node.js, PostgreSQL, TensorFlow, Docker",
+  advice: "Never stop building things. Every project — no matter how small — teaches you something a textbook never could.",
+  email: "jane.doe@university.ac.za"
+};
+
+const SKILLS_DATA = [
+  { label: "JavaScript / TypeScript", pct: 92 },
+  { label: "Python & Data Science",   pct: 85 },
+  { label: "Web Technologies",        pct: 95 },
+  { label: "Databases & SQL",         pct: 80 },
+  { label: "Machine Learning",        pct: 72 },
+  { label: "Agile & DevOps",          pct: 78 },
+];
+
+const TIMELINE_DATA = [
+  { year:"2024–Present", title:"Senior Lecturer", sub:"University of Technology · Academia",   category:"academia",  detail:"Leading final-year web development and AI modules. Supervising postgraduate research." },
+  { year:"2020–2024",    title:"Lecturer",         sub:"University of Technology · Academia",   category:"academia",  detail:"Developed new curriculum for JavaScript and cloud computing courses." },
+  { year:"2017–2020",    title:"Software Engineer",sub:"TechCorp SA · Industry",               category:"industry",  detail:"Built large-scale fintech APIs; led a team of 6 developers." },
+  { year:"2014–2017",    title:"Junior Developer", sub:"StartupHub · Industry",                category:"industry",  detail:"Full-stack development using React and Node.js for SaaS products." },
+  { year:"2011–2014",    title:"PhD – HCI",        sub:"University of Pretoria · Education",   category:"education", detail:"Researched touch interface usability; published 4 peer-reviewed papers." },
+  { year:"2009–2011",    title:"MSc Software Eng", sub:"UCT · Education",                      category:"education", detail:"Graduated cum laude; thesis on distributed systems performance." },
+  { year:"2006–2009",    title:"BSc Computer Sci", sub:"Wits University · Education",          category:"education", detail:"Dean's Merit List all three years." },
+];
+
+// ── BUILD SKILLS ──
+const grid = document.querySelector('.skills-grid');
+SKILLS_DATA.forEach(s => {
+  grid.innerHTML += `
+    <div class="skill-item">
+      <label><span>${s.label}</span><span>${s.pct}%</span></label>
+      <div class="skill-bar"><div class="skill-fill" data-pct="${s.pct}"></div></div>
+    </div>`;
+});
+
+// ── BUILD TIMELINE ──
+const tlEl = document.getElementById('timeline');
+
+function renderTimeline(filter) {
+  tlEl.innerHTML = '';
+  TIMELINE_DATA.filter(d => filter === 'all' || d.category === filter).forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'tl-item reveal';
+    div.dataset.category = d.category;
+    div.innerHTML = `
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-year">${d.year}</div>
+        <div class="tl-title">${d.title}</div>
+        <div class="tl-sub">${d.sub}</div>
+        <div class="tl-detail">${d.detail}</div>
+      </div>`;
+    div.addEventListener('click', () => div.classList.toggle('open'));
+    tlEl.appendChild(div);
+  });
+  observeReveal();
+}
+
+renderTimeline('all');
+
+// Filter tabs
+document.getElementById('filterTabs').addEventListener('click', e => {
+  if (!e.target.matches('.filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderTimeline(e.target.dataset.filter);
+});
+
+// ── SCROLL REVEAL ──
+function observeReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('visible');
+        en.target.querySelectorAll('.skill-fill').forEach(f => {
+          f.style.width = f.dataset.pct + '%';
+        });
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal.visible .skill-fill').forEach(f => {
+    f.style.width = f.dataset.pct + '%';
+  });
+}
+
+observeReveal();
+
+// ── SMOOTH SCROLL NAV ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ── CHAT WIDGET ──
+const chatWin  = document.getElementById('chat-window');
+const chatMsgs = document.getElementById('chat-messages');
+const chatInput= document.getElementById('chat-input');
+const chips    = document.getElementById('quickChips');
+
+document.getElementById('chat-toggle').addEventListener('click', () => chatWin.classList.toggle('open'));
+document.getElementById('chatClose').addEventListener('click',  () => chatWin.classList.remove('open'));
+
+function addMsg(text, role) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + role;
+  d.textContent = text;
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  return d;
+}
+
+function addTyping() {
+  const d = document.createElement('div');
+  d.className = 'msg bot typing-dots';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  return d;
+}
+
+async function sendChat(userMsg) {
+  if (!userMsg.trim()) return;
+  chips.style.display = 'none';
+  addMsg(userMsg, 'user');
+  chatInput.value = '';
+  const typing = addTyping();
+
+  const systemPrompt = `You are ${LECTURER.name}, ${LECTURER.title} at ${LECTURER.institution}.
+Bio: ${LECTURER.bio}
+Qualifications: ${LECTURER.qualifications}
+Research: ${LECTURER.research}
+Tech Stack: ${LECTURER.techStack}
+Career Advice: ${LECTURER.advice}
+Contact: ${LECTURER.email}
+Speak in first person, warmly and professionally. Keep answers concise (2-4 sentences). 
+If asked something you genuinely don't know about yourself, say so kindly.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+    const data = await res.json();
+    typing.remove();
+    const reply = data?.content?.[0]?.text || "I'm not sure how to answer that right now!";
+    addMsg(reply, 'bot');
+  } catch {
+    typing.remove();
+    addMsg("Sorry, I'm having trouble connecting right now. Please try again!", 'bot');
+  }
+}
+
+document.getElementById('chat-send').addEventListener('click', () => sendChat(chatInput.value));
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(chatInput.value); });
+
+chips.addEventListener('click', e => {
+  if (e.target.matches('.chip')) sendChat(e.target.textContent.replace(/^.{2}/, '').trim());
+});
+
+// Welcome message
+setTimeout(() => {
+  addMsg(`Hi there! 👋 I'm ${LECTURER.name}. Ask me anything about my career, research, or advice for students!`, 'bot');
+}, 600);
