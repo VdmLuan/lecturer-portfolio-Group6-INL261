@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ikraam Sadek Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sec.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">IS // Portfolio</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#facts">Fun Facts</a></li>
+    <li><a href="#quotes">Quotes</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-tag">// Belgium Campus · iTversity</div>
+      <h1 class="hero-name">Ikraam<br/><span>Sadek</span></h1>
+      <div class="hero-title">Junior Lecturer · Advanced Dip. Application Dev.</div>
+      <p class="hero-tagline">Educator. Developer. Adrenaline seeker.<br/>
+        <em>"We'll make it work."</em>
+      </p>
+      <a class="hero-cta" href="#about">Explore Portfolio →</a>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-svg-container" style="animation:float 4s ease-in-out infinite;">
+        <div class="avatar-ring"></div>
+        <div class="badge-top avatar-badge">Junior Lecturer</div>
+        <div class="badge-right avatar-badge">We'll make it work 💜</div>
+        <div class="badge-bot avatar-badge">@ Belgium Campus</div>
+        <!-- CSS Avatar SVG -->
+        <svg viewBox="0 0 300 340" width="300" height="340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glowBg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#c8956c"/>
+              <stop offset="100%" stop-color="#a0714f"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="150" cy="200" rx="130" ry="140" fill="url(#glowBg)"/>
+          <rect x="60" y="210" width="180" height="130" rx="20" fill="#1a1a3a"/>
+          <rect x="100" y="210" width="100" height="50" rx="8" fill="#2a2a5a"/>
+          <circle cx="150" cy="225" r="4" fill="#6c63ff"/>
+          <circle cx="150" cy="240" r="4" fill="#6c63ff"/>
+          <circle cx="150" cy="255" r="4" fill="#6c63ff"/>
+          <rect x="130" y="190" width="40" height="30" rx="8" fill="url(#skinGrad)"/>
+          <ellipse cx="150" cy="165" rx="68" ry="75" fill="url(#skinGrad)"/>
+          <ellipse cx="150" cy="218" rx="42" ry="18" fill="#3a2010" opacity="0.7"/>
+          <ellipse cx="150" cy="108" rx="68" ry="35" fill="#1a0d08"/>
+          <path d="M82 120 Q90 95 110 95 Q130 88 150 90 Q170 88 190 95 Q210 95 218 120" fill="#1a0d08"/>
+          <path d="M112 145 Q122 138 132 142" stroke="#2a1508" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M168 142 Q178 138 188 145" stroke="#2a1508" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="125" cy="155" rx="11" ry="10" fill="#fff"/>
+          <ellipse cx="175" cy="155" rx="11" ry="10" fill="#fff"/>
+          <ellipse cx="126" cy="156" rx="7" ry="7" fill="#2a1508"/>
+          <ellipse cx="176" cy="156" rx="7" ry="7" fill="#2a1508"/>
+          <circle cx="129" cy="153" r="2.5" fill="#fff"/>
+          <circle cx="179" cy="153" r="2.5" fill="#fff"/>
+          <path d="M148 165 Q145 180 140 185 Q148 190 160 185 Q155 180 152 165" fill="#8a6040"/>
+          <path d="M130 200 Q150 215 170 200" stroke="#7a4a28" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <rect x="108" y="148" width="36" height="22" rx="8" fill="none" stroke="#6c63ff" stroke-width="2.5"/>
+          <rect x="156" y="148" width="36" height="22" rx="8" fill="none" stroke="#6c63ff" stroke-width="2.5"/>
+          <line x1="144" y1="159" x2="156" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <line x1="82" y1="159" x2="108" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <line x1="192" y1="159" x2="218" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <rect x="78" y="275" width="144" height="8" rx="4" fill="#0f0f1a" stroke="#6c63ff" stroke-width="1"/>
+          <rect x="90" y="250" width="120" height="28" rx="4" fill="#1a1a3a" stroke="#6c63ff" stroke-width="1"/>
+          <line x1="98" y1="256" x2="202" y2="256" stroke="#6c63ff" stroke-width="1" opacity="0.5"/>
+          <line x1="98" y1="262" x2="170" y2="262" stroke="#9b59b6" stroke-width="1" opacity="0.5"/>
+          <line x1="98" y1="268" x2="185" y2="268" stroke="#6c63ff" stroke-width="1" opacity="0.5"/>
+          <circle cx="40" cy="60" r="3" fill="#6c63ff" opacity="0.6"/>
+          <circle cx="260" cy="80" r="4" fill="#9b59b6" opacity="0.5"/>
+          <circle cx="30" cy="250" r="2.5" fill="#3d5af1" opacity="0.7"/>
+          <circle cx="270" cy="280" r="3" fill="#6c63ff" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">// 01. About</div>
+    <h2 class="section-title">The person behind<br/><span>the lectures</span></h2>
+    <div class="about-grid">
+      <div>
+        <div id="typed-tagline"></div><span class="cursor-blink" id="cursor"></span>
+        <div class="about-bio reveal">
+          Mr. Ikraam Sadek is a Junior Lecturer at Belgium Campus iTversity, where he teaches a wide range of modules spanning programming, web development, software analysis, and information systems.<br/><br/>
+          He holds an <strong>Advanced Diploma in Application Development</strong> from Rosebank College — and he brings that practical, hands-on spirit into every class.<br/><br/>
+          His teaching philosophy is simple: <strong>no one-sided lectures</strong>. Classes should feel like conversations. Real discussions. Debates about code. That's where the real learning happens.
+        </div>
+        <div class="badge-row reveal">
+          <div class="badge"><span class="badge-icon">🎓</span> Application Development</div>
+          <div class="badge"><span class="badge-icon">💜</span> Interactive Teaching</div>
+          <div class="badge"><span class="badge-icon">🚀</span> GitHub Advocate</div>
+          <div class="badge"><span class="badge-icon">⚡</span> Adrenaline Seeker</div>
+          <div class="badge"><span class="badge-icon">🛠️</span> Problem Solver</div>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-label">Qualification</div>
+          <div class="stat-val">Advanced Diploma in Application Development<br/><span style="color:var(--muted);font-size:.85rem;">Rosebank College</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Modules taught this year</div>
+          <div class="stat-val" style="font-size:2rem;color:var(--accent);">9</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Superpower</div>
+          <div class="stat-val">Helpfulness — always finding a way forward.<br/><span style="color:var(--accent);font-family:'Space Mono',monospace;font-size:.85rem;">"We'll make it work."</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Teaching style</div>
+          <div class="stat-val">Discussion-driven · Engaging · Interactive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS (from Code 1) -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">// 02. Technical Skills</div>
+    <h2 class="section-title reveal">Technical <span>Skills</span></h2>
+    <div class="skills-grid reveal">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="section-inner">
+    <div class="section-label">// 03. Modules & Expertise</div>
+    <h2 class="section-title">What he <span>teaches</span></h2>
+    <p style="color:var(--muted);margin-bottom:2.5rem;font-size:.95rem;">Hover over a module card to flip it and see more details.</p>
+    <div class="modules-grid" id="modules-grid"></div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE (from Code 1) -->
+<section id="career">
+  <div class="section-inner">
+    <div class="section-label">// 04. Career Journey</div>
+    <h2 class="section-title reveal">Career <span>Journey</span></h2>
+    <div class="filter-tabs reveal" id="filterTabs">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="education">Education</button>
+      <button class="filter-btn" data-filter="industry">Industry</button>
+      <button class="filter-btn" data-filter="academia">Academia</button>
+    </div>
+    <div class="timeline reveal" id="timeline"></div>
+  </div>
+</section>
+
+<!-- FUN FACTS -->
+<section id="facts">
+  <div class="section-inner">
+    <div class="section-label">// 05. Fun Facts & Superpowers</div>
+    <h2 class="section-title">Beyond the <span>classroom</span></h2>
+    <div class="facts-grid" id="facts-grid"></div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <div class="section-inner quotes-inner">
+    <div class="section-label">// 06. Quote Wall</div>
+    <h2 class="section-title">Words he lives <span>by</span></h2>
+    <div class="quote-carousel" id="quote-carousel"></div>
+    <div class="quote-dots" id="quote-dots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">// 07. Connect</div>
+    <h2 class="section-title">Get in <span>touch</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-card-title">Office & Department</div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🏛️</div>
+          <div>
+            <div class="contact-item-label">Institution</div>
+            <div class="contact-item-val">Belgium Campus iTversity</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📚</div>
+          <div>
+            <div class="contact-item-label">Department</div>
+            <div class="contact-item-val">IT / Software Development</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Office Hours</div>
+            <div class="contact-item-val">Monday – Friday<br/>By appointment or after class</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💻</div>
+          <div>
+            <div class="contact-item-label">Best way to reach</div>
+            <div class="contact-item-val">Via Belgium Campus student portal or in-person after class</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-big reveal">
+        <div class="cta-big-icon">🚀</div>
+        <div class="cta-big-title">Build your portfolio on GitHub</div>
+        <div class="cta-big-body">
+          Mr. Sadek's number one career tip: after you get your practical marks and feedback, apply the feedback and push your project to GitHub. Build a portfolio that shows companies you can do things <em>practically</em> — not just theoretically.
+        </div>
+        <a class="btn-pulse" href="https://github.com" target="_blank">Start on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built with 💜 by students of <span>INL261</span> · Belgium Campus iTversity · <span>2025</span></p>
+  <p style="margin-top:.5rem;font-size:.65rem;opacity:.5;">AI-assisted portfolio · All content sourced from the lecturer's social engineering session · No personal data included</p>
+</footer>
+
+<!-- CHAT WIDGET (from Code 1) -->
+<button id="chat-toggle" title="Chat with the Lecturer">💬</button>
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">👨‍🏫</div>
+    <div class="chat-header-info">
+      <h4>Mr. Ikraam Sadek</h4>
+      <p>Ask me about my career &amp; advice</p>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="quick-chips" id="quickChips">
+    <span class="chip">📚 Your qualifications?</span>
+    <span class="chip">💡 Career advice?</span>
+    <span class="chip">🔭 Modules you teach?</span>
+    <span class="chip">🛠️ Tech stack?</span>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask the lecturer anything…"/>
+    <button id="chat-send">➤</button>
+  </div>
+</div>
+
+<script src="sec.js"></script>
+</body>
+</html>
