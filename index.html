@@ -1,9 +1,1282 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Lecturer Portfolio</title>
-  </head>
-  <body>
-    <h1>Coming Soon</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ikraam Sadek Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f1a;
+  --bg3: #141428;
+  --card: #12121f;
+  --border: #2a2a4a;
+  --accent: #6c63ff;
+  --accent2: #9b59b6;
+  --accent3: #3d5af1;
+  --maroon: #8b1a4a;
+  --text: #e8e8f0;
+  --muted: #7878a0;
+  --glow: 0 0 30px rgba(108,99,255,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Syne',sans-serif;
+  overflow-x:hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 2.5rem;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Space Mono',monospace;
+  font-size:.85rem;color:var(--accent);
+  letter-spacing:.1em;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+  position:relative;padding-bottom:4px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:2px;background:var(--accent);transition:width .3s;
+}
+.nav-links a:hover,
+.nav-links a.active{color:var(--accent);}
+.nav-links a:hover::after,
+.nav-links a.active::after{width:100%;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:.3s;}
+
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:6rem 2rem 2rem;
+}
+#particles-canvas{
+  position:absolute;inset:0;z-index:0;
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  max-width:1100px;width:100%;
+  position:relative;z-index:1;
+}
+.hero-tag{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.2rem;
+  opacity:0;animation:fadeUp .6s .2s forwards;
+}
+.hero-name{
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:800;line-height:1.05;
+  margin-bottom:.5rem;
+  opacity:0;animation:fadeUp .6s .4s forwards;
+}
+.hero-name span{
+  background:linear-gradient(135deg,var(--accent),var(--accent2),var(--maroon));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-title{
+  font-size:1rem;color:var(--muted);margin-bottom:1.5rem;
+  font-family:'Space Mono',monospace;
+  opacity:0;animation:fadeUp .6s .6s forwards;
+}
+.hero-tagline{
+  font-size:1.1rem;line-height:1.7;color:var(--text);
+  max-width:480px;margin-bottom:2rem;
+  opacity:0;animation:fadeUp .6s .8s forwards;
+}
+.hero-tagline em{
+  font-style:normal;color:var(--accent);
+  font-family:'Space Mono',monospace;
+  font-size:.95rem;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:.75rem;
+  padding:.8rem 2rem;border-radius:4px;
+  background:var(--accent);color:#fff;
+  font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;
+  border:none;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+  opacity:0;animation:fadeUp .6s 1s forwards;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:var(--glow);}
+
+/* ─── AVATAR ─── */
+.avatar-wrap{
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;animation:fadeUp .8s .5s forwards;
+}
+.avatar-svg-container{
+  position:relative;
+  width:300px;height:340px;
+}
+.avatar-ring{
+  position:absolute;inset:-16px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  animation:spin 20s linear infinite;
+}
+.avatar-ring::before{
+  content:'';position:absolute;
+  top:8px;left:50%;transform:translateX(-50%);
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 10px var(--accent);
+}
+.avatar-badge{
+  position:absolute;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:.4rem .8rem;
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.badge-top{top:-10px;left:50%;transform:translateX(-50%);}
+.badge-right{right:-60px;top:50%;transform:translateY(-50%);}
+.badge-bot{bottom:-10px;left:50%;transform:translateX(-50%);}
+
+/* ─── SECTION BASE ─── */
+section{padding:6rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.75rem;
+}
+.section-title{
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:800;margin-bottom:3rem;
+  line-height:1.15;
+}
+.section-title span{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--bg2);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:start;
+}
+.about-bio{
+  font-size:1rem;line-height:1.8;color:var(--muted);
+  border-left:2px solid var(--accent);
+  padding-left:1.5rem;
+  position:relative;
+}
+.about-bio::before{
+  content:'';position:absolute;
+  left:-5px;top:0;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px var(--accent);
+}
+.about-bio strong{color:var(--text);}
+#typed-tagline{
+  font-size:1.15rem;font-weight:700;
+  color:var(--text);margin-bottom:1.5rem;
+  min-height:2rem;
+}
+.cursor-blink{
+  display:inline-block;width:2px;height:1.2em;
+  background:var(--accent);margin-left:2px;
+  vertical-align:text-bottom;
+  animation:blink .7s infinite;
+}
+.badge-row{
+  display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.45rem 1rem;border-radius:3px;
+  font-size:.78rem;letter-spacing:.08em;
+  background:var(--bg3);border:1px solid var(--border);
+  color:var(--muted);transition:all .2s;
+}
+.badge:hover{border-color:var(--accent);color:var(--accent);}
+.badge-icon{font-size:1rem;}
+
+.about-stats{display:flex;flex-direction:column;gap:1.5rem;}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:1.5rem;
+  transition:border-color .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.stat-card::before{
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--accent),var(--accent2));
+  border-radius:3px 0 0 3px;
+}
+.stat-card:hover{border-color:var(--accent);box-shadow:var(--glow);}
+.stat-label{
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.5rem;
+}
+.stat-val{font-size:1.05rem;font-weight:700;line-height:1.5;}
+
+/* ─── SKILLS (from Code 1) ─── */
+#skills{background:var(--bg);}
+.skills-grid{display:grid;gap:1.2rem;}
+.skill-item label{
+  display:flex;justify-content:space-between;
+  margin-bottom:.4rem;font-size:.9rem;
+  color:var(--text);
+}
+.skill-bar{
+  height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;
+}
+.skill-fill{
+  height:100%;border-radius:4px;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:width 1.4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── MODULES ─── */
+#modules{background:var(--bg2);}
+.modules-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.module-card{
+  perspective:1000px;height:180px;cursor:pointer;
+}
+.module-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.4,0,.2,1);
+}
+.module-card:hover .module-inner{transform:rotateY(180deg);}
+.module-front,.module-back{
+  position:absolute;inset:0;
+  border-radius:8px;
+  backface-visibility:hidden;
+  padding:1.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.module-front{
+  background:var(--card);
+  border:1px solid var(--border);
+}
+.module-back{
+  background:linear-gradient(135deg,var(--bg3),var(--card));
+  border:1px solid var(--accent);
+  transform:rotateY(180deg);
+}
+.module-code{
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;letter-spacing:.15em;
+  color:var(--accent);margin-bottom:.5rem;
+}
+.module-name{font-size:1rem;font-weight:700;line-height:1.3;}
+.module-year{
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;color:var(--muted);
+}
+.module-back-title{
+  font-size:.9rem;font-weight:700;color:var(--accent);
+  margin-bottom:.5rem;
+}
+.module-back-desc{
+  font-size:.83rem;line-height:1.6;color:var(--muted);
+  flex:1;
+}
+.flip-hint{
+  font-family:'Space Mono',monospace;
+  font-size:.65rem;color:var(--accent);
+  opacity:.7;
+}
+
+/* ─── CAREER TIMELINE (from Code 1) ─── */
+#career{background:var(--bg);}
+.filter-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;}
+.filter-btn{
+  padding:.4rem 1rem;border-radius:20px;border:1px solid var(--border);
+  background:transparent;color:var(--muted);cursor:pointer;font-size:.85rem;
+  font-family:'Syne',sans-serif;
+  transition:.3s;
+}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.timeline{position:relative;padding-left:2rem;}
+.timeline::before{
+  content:'';position:absolute;left:.5rem;top:0;bottom:0;
+  width:2px;background:var(--border);
+}
+.tl-item{
+  position:relative;margin-bottom:1.8rem;cursor:pointer;
+}
+.tl-dot{
+  position:absolute;left:-1.6rem;top:.4rem;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);
+  transition:transform .3s,box-shadow .3s;
+}
+.tl-item:hover .tl-dot{transform:scale(1.4);box-shadow:0 0 12px var(--accent);}
+.tl-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:1rem 1.2rem;transition:border-color .3s;
+}
+.tl-item:hover .tl-card{border-color:var(--accent);}
+.tl-year{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;color:var(--accent);font-weight:600;margin-bottom:.2rem;
+}
+.tl-title{font-weight:600;margin-bottom:.2rem;}
+.tl-sub{font-size:.85rem;color:var(--muted);}
+.tl-detail{
+  max-height:0;overflow:hidden;font-size:.85rem;
+  color:var(--muted);margin-top:0;
+  transition:max-height .4s ease,margin-top .3s;
+}
+.tl-item.open .tl-detail{max-height:200px;margin-top:.6rem;}
+
+/* ─── FUN FACTS ─── */
+#facts{background:var(--bg2);}
+.facts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;
+}
+.fact-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:1.8rem;
+  cursor:pointer;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.fact-card::after{
+  content:'Click to reveal';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;color:var(--accent);
+  letter-spacing:.1em;
+  background:rgba(10,10,15,.85);
+  transition:opacity .3s;
+  border-radius:8px;
+}
+.fact-card.revealed::after{opacity:0;pointer-events:none;}
+.fact-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--glow);}
+.fact-emoji{font-size:2.2rem;margin-bottom:1rem;}
+.fact-title{font-size:1rem;font-weight:700;margin-bottom:.75rem;color:var(--text);}
+.fact-body{font-size:.9rem;line-height:1.6;color:var(--muted);}
+
+/* ─── QUOTES ─── */
+#quotes{
+  background:var(--bg);
+  position:relative;overflow:hidden;
+}
+#quotes::before{
+  content:'"';
+  position:absolute;
+  font-size:30rem;font-family:'Space Mono',monospace;
+  color:var(--bg2);
+  top:-4rem;left:-2rem;
+  line-height:1;
+  z-index:0;
+  pointer-events:none;
+}
+.quotes-inner{position:relative;z-index:1;}
+.quote-carousel{position:relative;min-height:280px;}
+.quote-slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .6s,transform .6s;
+  pointer-events:none;
+}
+.quote-slide.active{
+  opacity:1;transform:translateY(0);
+  position:relative;pointer-events:auto;
+}
+.quote-text{
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-weight:700;line-height:1.6;
+  color:var(--text);
+  max-width:800px;
+  margin-bottom:2rem;
+}
+.quote-source{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;color:var(--accent);
+  letter-spacing:.1em;
+}
+.quote-dots{display:flex;gap:.6rem;margin-top:2rem;}
+.quote-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);cursor:pointer;
+  transition:background .3s,transform .2s;
+  border:none;
+}
+.quote-dot.active{background:var(--accent);transform:scale(1.3);}
+
+/* ─── CONTACT ─── */
+#contact{
+  background:var(--bg2);
+  position:relative;overflow:hidden;
+}
+#contact::after{
+  content:'';
+  position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(108,99,255,.06) 0%,transparent 70%);
+  bottom:-200px;right:-100px;
+  pointer-events:none;
+}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:start;
+}
+.contact-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:2rem;
+  transition:border-color .3s,box-shadow .3s;
+}
+.contact-card:hover{border-color:var(--accent);box-shadow:var(--glow);}
+.contact-card-title{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;
+}
+.contact-item{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:.75rem 0;
+  border-bottom:1px solid var(--border);
+  font-size:.9rem;
+}
+.contact-item:last-child{border-bottom:none;}
+.contact-item-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.contact-item-label{
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.2rem;
+  font-family:'Space Mono',monospace;
+}
+.contact-item-val{color:var(--text);line-height:1.4;}
+
+.cta-big{
+  background:linear-gradient(135deg,var(--bg3),var(--card));
+  border:1px solid var(--border);
+  border-radius:8px;padding:2.5rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-big::before{
+  content:'';position:absolute;
+  inset:-1px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2),var(--maroon));
+  z-index:-1;
+  opacity:0;transition:opacity .3s;
+}
+.cta-big:hover::before{opacity:1;}
+.cta-big-icon{font-size:3rem;margin-bottom:1rem;}
+.cta-big-title{font-size:1.4rem;font-weight:800;margin-bottom:.75rem;}
+.cta-big-body{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;}
+.btn-pulse{
+  display:inline-block;
+  padding:.85rem 2.5rem;border-radius:4px;
+  background:var(--accent);color:#fff;
+  font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:none;
+  animation:pulse 2.5s ease-in-out infinite;
+  transition:transform .2s;
+  font-family:'Syne',sans-serif;font-weight:700;
+}
+.btn-pulse:hover{transform:scale(1.04);animation:none;}
+
+/* ─── CHAT WIDGET (from Code 1) ─── */
+#chat-toggle{
+  position:fixed;bottom:2rem;right:2rem;z-index:999;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;cursor:pointer;font-size:1.6rem;
+  box-shadow:0 4px 20px rgba(108,99,255,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s,box-shadow .3s;
+}
+#chat-toggle:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(108,99,255,.7);}
+#chat-window{
+  position:fixed;bottom:6rem;right:2rem;z-index:998;
+  width:min(380px,calc(100vw - 2rem));
+  background:var(--card);border-radius:16px;
+  border:1px solid var(--border);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:scale(0) translateY(20px);transform-origin:bottom right;
+  opacity:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  pointer-events:none;
+}
+#chat-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+.chat-header{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;
+}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.chat-header-info h4{font-size:.95rem;}
+.chat-header-info p{font-size:.75rem;opacity:.8;}
+.chat-close{margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;opacity:.8;}
+.chat-close:hover{opacity:1;}
+#chat-messages{
+  flex:1;overflow-y:auto;padding:1rem;display:flex;
+  flex-direction:column;gap:.8rem;max-height:320px;
+}
+#chat-messages::-webkit-scrollbar{width:4px;}
+#chat-messages::-webkit-scrollbar-thumb{background:rgba(108,99,255,.3);border-radius:2px;}
+.msg{max-width:85%;padding:.65rem .9rem;border-radius:12px;font-size:.88rem;line-height:1.5;}
+.msg.bot{background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.2);align-self:flex-start;border-bottom-left-radius:4px;}
+.msg.user{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.typing-dots span{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--accent);margin:0 2px;
+  animation:bounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2){animation-delay:.2s;}
+.typing-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-input-row{
+  display:flex;gap:.5rem;padding:.8rem;
+  border-top:1px solid var(--border);
+}
+#chat-input{
+  flex:1;background:rgba(255,255,255,.07);border:1px solid var(--border);
+  border-radius:20px;padding:.5rem 1rem;color:var(--text);font-size:.88rem;outline:none;
+  font-family:'Syne',sans-serif;
+}
+#chat-input:focus{border-color:var(--accent);}
+#chat-send{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;color:#fff;cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:transform .2s;
+}
+#chat-send:hover{transform:scale(1.1);}
+.quick-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .6rem;}
+.chip{
+  background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.25);
+  color:var(--accent);padding:.3rem .7rem;border-radius:12px;
+  font-size:.75rem;cursor:pointer;transition:.2s;
+}
+.chip:hover{background:var(--accent);color:#fff;}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  padding:2rem;text-align:center;
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;color:var(--muted);
+}
+footer span{color:var(--accent);}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .7s,transform .7s;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0);}
+  from{opacity:0;transform:translateY(20px);}
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(108,99,255,.4);}
+  50%{box-shadow:0 0 0 12px rgba(108,99,255,0);}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .avatar-wrap{order:-1;}
+  nav{padding:1rem 1.2rem;}
+  .nav-links{
+    display:none;flex-direction:column;
+    position:fixed;top:56px;left:0;right:0;
+    background:var(--card);padding:1rem 2rem;gap:1rem;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links.open{display:flex;}
+  .hamburger{display:flex;}
+  section{padding:3rem 1.2rem;}
+}
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">IS // Portfolio</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#facts">Fun Facts</a></li>
+    <li><a href="#quotes">Quotes</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-tag">// Belgium Campus · iTversity</div>
+      <h1 class="hero-name">Ikraam<br/><span>Sadek</span></h1>
+      <div class="hero-title">Junior Lecturer · Advanced Dip. Application Dev.</div>
+      <p class="hero-tagline">Educator. Developer. Adrenaline seeker.<br/>
+        <em>"We'll make it work."</em>
+      </p>
+      <a class="hero-cta" href="#about">Explore Portfolio →</a>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-svg-container" style="animation:float 4s ease-in-out infinite;">
+        <div class="avatar-ring"></div>
+        <div class="badge-top avatar-badge">Junior Lecturer</div>
+        <div class="badge-right avatar-badge">We'll make it work 💜</div>
+        <div class="badge-bot avatar-badge">@ Belgium Campus</div>
+        <!-- CSS Avatar SVG -->
+        <svg viewBox="0 0 300 340" width="300" height="340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glowBg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#c8956c"/>
+              <stop offset="100%" stop-color="#a0714f"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="150" cy="200" rx="130" ry="140" fill="url(#glowBg)"/>
+          <rect x="60" y="210" width="180" height="130" rx="20" fill="#1a1a3a"/>
+          <rect x="100" y="210" width="100" height="50" rx="8" fill="#2a2a5a"/>
+          <circle cx="150" cy="225" r="4" fill="#6c63ff"/>
+          <circle cx="150" cy="240" r="4" fill="#6c63ff"/>
+          <circle cx="150" cy="255" r="4" fill="#6c63ff"/>
+          <rect x="130" y="190" width="40" height="30" rx="8" fill="url(#skinGrad)"/>
+          <ellipse cx="150" cy="165" rx="68" ry="75" fill="url(#skinGrad)"/>
+          <ellipse cx="150" cy="218" rx="42" ry="18" fill="#3a2010" opacity="0.7"/>
+          <ellipse cx="150" cy="108" rx="68" ry="35" fill="#1a0d08"/>
+          <path d="M82 120 Q90 95 110 95 Q130 88 150 90 Q170 88 190 95 Q210 95 218 120" fill="#1a0d08"/>
+          <path d="M112 145 Q122 138 132 142" stroke="#2a1508" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M168 142 Q178 138 188 145" stroke="#2a1508" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="125" cy="155" rx="11" ry="10" fill="#fff"/>
+          <ellipse cx="175" cy="155" rx="11" ry="10" fill="#fff"/>
+          <ellipse cx="126" cy="156" rx="7" ry="7" fill="#2a1508"/>
+          <ellipse cx="176" cy="156" rx="7" ry="7" fill="#2a1508"/>
+          <circle cx="129" cy="153" r="2.5" fill="#fff"/>
+          <circle cx="179" cy="153" r="2.5" fill="#fff"/>
+          <path d="M148 165 Q145 180 140 185 Q148 190 160 185 Q155 180 152 165" fill="#8a6040"/>
+          <path d="M130 200 Q150 215 170 200" stroke="#7a4a28" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <rect x="108" y="148" width="36" height="22" rx="8" fill="none" stroke="#6c63ff" stroke-width="2.5"/>
+          <rect x="156" y="148" width="36" height="22" rx="8" fill="none" stroke="#6c63ff" stroke-width="2.5"/>
+          <line x1="144" y1="159" x2="156" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <line x1="82" y1="159" x2="108" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <line x1="192" y1="159" x2="218" y2="159" stroke="#6c63ff" stroke-width="2"/>
+          <rect x="78" y="275" width="144" height="8" rx="4" fill="#0f0f1a" stroke="#6c63ff" stroke-width="1"/>
+          <rect x="90" y="250" width="120" height="28" rx="4" fill="#1a1a3a" stroke="#6c63ff" stroke-width="1"/>
+          <line x1="98" y1="256" x2="202" y2="256" stroke="#6c63ff" stroke-width="1" opacity="0.5"/>
+          <line x1="98" y1="262" x2="170" y2="262" stroke="#9b59b6" stroke-width="1" opacity="0.5"/>
+          <line x1="98" y1="268" x2="185" y2="268" stroke="#6c63ff" stroke-width="1" opacity="0.5"/>
+          <circle cx="40" cy="60" r="3" fill="#6c63ff" opacity="0.6"/>
+          <circle cx="260" cy="80" r="4" fill="#9b59b6" opacity="0.5"/>
+          <circle cx="30" cy="250" r="2.5" fill="#3d5af1" opacity="0.7"/>
+          <circle cx="270" cy="280" r="3" fill="#6c63ff" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">// 01. About</div>
+    <h2 class="section-title">The person behind<br/><span>the lectures</span></h2>
+    <div class="about-grid">
+      <div>
+        <div id="typed-tagline"></div><span class="cursor-blink" id="cursor"></span>
+        <div class="about-bio reveal">
+          Mr. Ikraam Sadek is a Junior Lecturer at Belgium Campus iTversity, where he teaches a wide range of modules spanning programming, web development, software analysis, and information systems.<br/><br/>
+          He holds an <strong>Advanced Diploma in Application Development</strong> from Rosebank College — and he brings that practical, hands-on spirit into every class.<br/><br/>
+          His teaching philosophy is simple: <strong>no one-sided lectures</strong>. Classes should feel like conversations. Real discussions. Debates about code. That's where the real learning happens.
+        </div>
+        <div class="badge-row reveal">
+          <div class="badge"><span class="badge-icon">🎓</span> Application Development</div>
+          <div class="badge"><span class="badge-icon">💜</span> Interactive Teaching</div>
+          <div class="badge"><span class="badge-icon">🚀</span> GitHub Advocate</div>
+          <div class="badge"><span class="badge-icon">⚡</span> Adrenaline Seeker</div>
+          <div class="badge"><span class="badge-icon">🛠️</span> Problem Solver</div>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-label">Qualification</div>
+          <div class="stat-val">Advanced Diploma in Application Development<br/><span style="color:var(--muted);font-size:.85rem;">Rosebank College</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Modules taught this year</div>
+          <div class="stat-val" style="font-size:2rem;color:var(--accent);">9</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Superpower</div>
+          <div class="stat-val">Helpfulness — always finding a way forward.<br/><span style="color:var(--accent);font-family:'Space Mono',monospace;font-size:.85rem;">"We'll make it work."</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Teaching style</div>
+          <div class="stat-val">Discussion-driven · Engaging · Interactive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS (from Code 1) -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">// 02. Technical Skills</div>
+    <h2 class="section-title reveal">Technical <span>Skills</span></h2>
+    <div class="skills-grid reveal">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="section-inner">
+    <div class="section-label">// 03. Modules & Expertise</div>
+    <h2 class="section-title">What he <span>teaches</span></h2>
+    <p style="color:var(--muted);margin-bottom:2.5rem;font-size:.95rem;">Hover over a module card to flip it and see more details.</p>
+    <div class="modules-grid" id="modules-grid"></div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE (from Code 1) -->
+<section id="career">
+  <div class="section-inner">
+    <div class="section-label">// 04. Career Journey</div>
+    <h2 class="section-title reveal">Career <span>Journey</span></h2>
+    <div class="filter-tabs reveal" id="filterTabs">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="education">Education</button>
+      <button class="filter-btn" data-filter="industry">Industry</button>
+      <button class="filter-btn" data-filter="academia">Academia</button>
+    </div>
+    <div class="timeline reveal" id="timeline"></div>
+  </div>
+</section>
+
+<!-- FUN FACTS -->
+<section id="facts">
+  <div class="section-inner">
+    <div class="section-label">// 05. Fun Facts & Superpowers</div>
+    <h2 class="section-title">Beyond the <span>classroom</span></h2>
+    <div class="facts-grid" id="facts-grid"></div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <div class="section-inner quotes-inner">
+    <div class="section-label">// 06. Quote Wall</div>
+    <h2 class="section-title">Words he lives <span>by</span></h2>
+    <div class="quote-carousel" id="quote-carousel"></div>
+    <div class="quote-dots" id="quote-dots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">// 07. Connect</div>
+    <h2 class="section-title">Get in <span>touch</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-card-title">Office & Department</div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🏛️</div>
+          <div>
+            <div class="contact-item-label">Institution</div>
+            <div class="contact-item-val">Belgium Campus iTversity</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📚</div>
+          <div>
+            <div class="contact-item-label">Department</div>
+            <div class="contact-item-val">IT / Software Development</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Office Hours</div>
+            <div class="contact-item-val">Monday – Friday<br/>By appointment or after class</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💻</div>
+          <div>
+            <div class="contact-item-label">Best way to reach</div>
+            <div class="contact-item-val">Via Belgium Campus student portal or in-person after class</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-big reveal">
+        <div class="cta-big-icon">🚀</div>
+        <div class="cta-big-title">Build your portfolio on GitHub</div>
+        <div class="cta-big-body">
+          Mr. Sadek's number one career tip: after you get your practical marks and feedback, apply the feedback and push your project to GitHub. Build a portfolio that shows companies you can do things <em>practically</em> — not just theoretically.
+        </div>
+        <a class="btn-pulse" href="https://github.com" target="_blank">Start on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built with 💜 by students of <span>INL261</span> · Belgium Campus iTversity · <span>2025</span></p>
+  <p style="margin-top:.5rem;font-size:.65rem;opacity:.5;">AI-assisted portfolio · All content sourced from the lecturer's social engineering session · No personal data included</p>
+</footer>
+
+<!-- CHAT WIDGET (from Code 1) -->
+<button id="chat-toggle" title="Chat with the Lecturer">💬</button>
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">👨‍🏫</div>
+    <div class="chat-header-info">
+      <h4>Mr. Ikraam Sadek</h4>
+      <p>Ask me about my career &amp; advice</p>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="quick-chips" id="quickChips">
+    <span class="chip">📚 Your qualifications?</span>
+    <span class="chip">💡 Career advice?</span>
+    <span class="chip">🔭 Modules you teach?</span>
+    <span class="chip">🛠️ Tech stack?</span>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask the lecturer anything…"/>
+    <button id="chat-send">➤</button>
+  </div>
+</div>
+
+<script>
+/* ─── PARTICLE CANVAS (Code 2) ─── */
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 2 + 0.5,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
+    alpha: Math.random() * 0.5 + 0.1,
+    color: ['#6c63ff','#9b59b6','#3d5af1','#8b1a4a'][Math.floor(Math.random()*4)]
+  });
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.dx; p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.alpha;
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i+1; j < particles.length; j++) {
+      const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = '#6c63ff';
+        ctx.globalAlpha = (1 - dist/100) * 0.12;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ─── TYPING EFFECT (Code 2) ─── */
+const phrases = [
+  '"We\'ll make it work."',
+  'Discussions over lectures.',
+  'Build your GitHub portfolio.',
+  'Learn by doing. Always.'
+];
+let pi = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed-tagline');
+
+function type() {
+  const current = phrases[pi];
+  if (!deleting) {
+    el.textContent = current.slice(0, ci++);
+    if (ci > current.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = current.slice(0, ci--);
+    if (ci < 0) { deleting = false; pi = (pi+1) % phrases.length; ci = 0; setTimeout(type, 400); return; }
+  }
+  setTimeout(type, deleting ? 40 : 70);
+}
+type();
+
+/* ─── SKILLS DATA (from Code 1) ─── */
+const SKILLS_DATA = [
+  { label: "JavaScript / TypeScript", pct: 92 },
+  { label: "Python & Data Science",   pct: 85 },
+  { label: "Web Technologies",        pct: 95 },
+  { label: "Databases & SQL",         pct: 80 },
+  { label: "Machine Learning",        pct: 72 },
+  { label: "Agile & DevOps",          pct: 78 },
+];
+
+const skillsGrid = document.querySelector('.skills-grid');
+SKILLS_DATA.forEach(s => {
+  skillsGrid.innerHTML += `
+    <div class="skill-item">
+      <label><span>${s.label}</span><span>${s.pct}%</span></label>
+      <div class="skill-bar"><div class="skill-fill" data-pct="${s.pct}"></div></div>
+    </div>`;
+});
+
+/* ─── MODULES DATA (Code 2) ─── */
+const modules = [
+  { code:'PRL161', name:'Programming Preliminaries', year:'1st Year', back:'Foundation course introducing programming concepts and logical thinking to new students.' },
+  { code:'PRG181', name:'Programming 1 (Sem 1)', year:'1st Year', back:'Core programming fundamentals — variables, loops, functions, and problem-solving strategies.' },
+  { code:'PRG171', name:'Programming 1 (Sem 2)', year:'1st Year', back:'Continuation of first-year programming with more complex data structures and algorithms.' },
+  { code:'WPR281', name:'Web Programming (Sem 1)', year:'2nd Year', back:'Front-end and back-end web development: HTML, CSS, JavaScript, and server-side scripting.' },
+  { code:'WPR271', name:'Web Programming (Sem 2)', year:'2nd Year', back:'Advanced web development concepts including frameworks, APIs, and dynamic web applications.' },
+  { code:'PRG261', name:'Programming 2 (Stream 1)', year:'2nd Year', back:'Object-oriented programming, design patterns, and intermediate software development practices.' },
+  { code:'PRG262', name:'Programming 2 (Stream 2)', year:'2nd Year', back:'Advanced OOP principles, data handling, and real-world application development projects.' },
+  { code:'PRG2782', name:'Programming 2 (Advanced)', year:'2nd Year', back:'Higher-level programming challenges and capstone-style projects for advanced students.' },
+  { code:'SWA261', name:'Software Analysis', year:'2nd Year', back:'Requirements gathering, system modelling, UML diagrams, and the software development lifecycle.' },
+  { code:'SWT261', name:'Software Testing 1', year:'2nd Year', back:'Testing strategies, unit tests, test plans, and quality assurance for software applications.' },
+  { code:'INF2781', name:'Information Systems 2', year:'2nd Year', back:'Business information systems, databases, ERDs, and the role of IT in organizational contexts.' },
+];
+
+const mg = document.getElementById('modules-grid');
+modules.forEach(m => {
+  mg.innerHTML += `
+  <div class="module-card reveal">
+    <div class="module-inner">
+      <div class="module-front">
+        <div>
+          <div class="module-code">${m.code}</div>
+          <div class="module-name">${m.name}</div>
+        </div>
+        <div class="module-year">${m.year} · Hover to flip</div>
+      </div>
+      <div class="module-back">
+        <div>
+          <div class="module-back-title">${m.code}</div>
+          <div class="module-back-desc">${m.back}</div>
+        </div>
+        <div class="flip-hint">↩ Hover to flip back</div>
+      </div>
+    </div>
+  </div>`;
+});
+
+/* ─── CAREER TIMELINE DATA (from Code 1) ─── */
+const TIMELINE_DATA = [
+  { year:"2024–Present", title:"Junior Lecturer", sub:"Belgium Campus iTversity · Academia", category:"academia", detail:"Teaching programming, web development, software analysis and information systems modules. Bringing practical, hands-on coding experience into every class." },
+  { year:"2022–2024",    title:"Application Developer", sub:"Industry Experience · Industry",   category:"industry", detail:"Developed web applications and software solutions, building the real-world experience that now informs classroom teaching." },
+  { year:"2020–2022",    title:"Adv. Dip. App. Development", sub:"Rosebank College · Education", category:"education", detail:"Graduated with an Advanced Diploma in Application Development — the foundation of his practical teaching philosophy." },
+];
+
+const tlEl = document.getElementById('timeline');
+
+function renderTimeline(filter) {
+  tlEl.innerHTML = '';
+  TIMELINE_DATA.filter(d => filter === 'all' || d.category === filter).forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'tl-item reveal';
+    div.dataset.category = d.category;
+    div.innerHTML = `
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-year">${d.year}</div>
+        <div class="tl-title">${d.title}</div>
+        <div class="tl-sub">${d.sub}</div>
+        <div class="tl-detail">${d.detail}</div>
+      </div>`;
+    div.addEventListener('click', () => div.classList.toggle('open'));
+    tlEl.appendChild(div);
+  });
+  observeReveal();
+}
+
+renderTimeline('all');
+
+document.getElementById('filterTabs').addEventListener('click', e => {
+  if (!e.target.matches('.filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderTimeline(e.target.dataset.filter);
+});
+
+/* ─── FUN FACTS DATA (Code 2) ─── */
+const facts = [
+  { emoji:'🪂', title:'Adrenaline Seeker', body:'Mr. Sadek really wants to go bungee jumping someday. He loves activities that get the adrenaline pumping — even if he barely gets to do them (yet).' },
+  { emoji:'🦸', title:'Superpower: Helpfulness', body:'His students know it: he always finds a solution. "We\'ll make it work" isn\'t just a phrase — it\'s a mindset.' },
+  { emoji:'💬', title:'Discussion > Lecture', body:'He believes the best learning happens in two-way conversations. Expect real debates about code, logic, and design decisions in class.' },
+  { emoji:'🐙', title:'GitHub Evangelist', body:'After every project submission, he tells students to apply their feedback and push their work to GitHub — building a live portfolio of practical skills.' },
+  { emoji:'🎯', title:'Adapt & Overcome', body:'His greatest ability is adapting to any given situation. New topic? New challenge? Unexpected error? "We\'ll make it work."' },
+  { emoji:'🎓', title:'Always Learning', body:'Holds an Advanced Diploma in Application Development from Rosebank College — and still approaches every class with a learner\'s mindset.' },
+];
+
+const fg = document.getElementById('facts-grid');
+facts.forEach(f => {
+  const card = document.createElement('div');
+  card.className = 'fact-card reveal';
+  card.innerHTML = `<div class="fact-emoji">${f.emoji}</div><div class="fact-title">${f.title}</div><div class="fact-body">${f.body}</div>`;
+  card.addEventListener('click', () => card.classList.toggle('revealed'));
+  fg.appendChild(card);
+});
+
+/* ─── QUOTES DATA (Code 2) ─── */
+const quotes = [
+  { text: 'After you get your marks and feedback for a practical project, apply the feedback. Then push it to GitHub. Build a portfolio that shows companies you can actually do things — not just theoretically.', source: '— Ikraam Sadek, on career development' },
+  { text: 'The best way to learn is through discussion. Not a one-sided lecture — a real conversation about the problem in front of you.', source: '— Ikraam Sadek, on teaching philosophy' },
+  { text: '"We\'ll make it work." That\'s not just something I say. It\'s how I approach every problem, every class, every challenge.', source: '— Ikraam Sadek, on his superpower' },
+  { text: 'Engage. Ask questions. Push back. The classroom is supposed to be interactive — that\'s where the real learning happens.', source: '— Ikraam Sadek, to his students' },
+];
+
+const qc = document.getElementById('quote-carousel');
+const qd = document.getElementById('quote-dots');
+let activeQ = 0;
+
+quotes.forEach((q, i) => {
+  const slide = document.createElement('div');
+  slide.className = 'quote-slide' + (i === 0 ? ' active' : '');
+  slide.innerHTML = `<div class="quote-text">${q.text}</div><div class="quote-source">${q.source}</div>`;
+  qc.appendChild(slide);
+
+  const dot = document.createElement('button');
+  dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToQuote(i));
+  qd.appendChild(dot);
+});
+
+function goToQuote(n) {
+  document.querySelectorAll('.quote-slide')[activeQ].classList.remove('active');
+  document.querySelectorAll('.quote-dot')[activeQ].classList.remove('active');
+  activeQ = n;
+  document.querySelectorAll('.quote-slide')[activeQ].classList.add('active');
+  document.querySelectorAll('.quote-dot')[activeQ].classList.add('active');
+}
+
+setInterval(() => goToQuote((activeQ + 1) % quotes.length), 4500);
+
+/* ─── SCROLL REVEAL (merged: Code 2 observer + Code 1 skill-fill trigger) ─── */
+function observeReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Trigger skill bar animations when visible (from Code 1)
+        e.target.querySelectorAll('.skill-fill').forEach(f => {
+          f.style.width = f.dataset.pct + '%';
+        });
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  // Trigger already-visible skill bars
+  document.querySelectorAll('.reveal.visible .skill-fill').forEach(f => {
+    f.style.width = f.dataset.pct + '%';
+  });
+}
+
+observeReveal();
+
+/* ─── SMOOTH SCROLL & ACTIVE NAV HIGHLIGHT (from Code 1) ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+/* ─── HAMBURGER MENU (from Code 1) ─── */
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ─── CHAT WIDGET (from Code 1) ─── */
+const LECTURER = {
+  name: "Mr. Ikraam Sadek",
+  title: "Junior Lecturer",
+  institution: "Belgium Campus iTversity",
+  bio: "I'm a Junior Lecturer at Belgium Campus iTversity, teaching modules spanning programming, web development, software analysis, and information systems. I hold an Advanced Diploma in Application Development from Rosebank College.",
+  qualifications: "Advanced Diploma in Application Development, Rosebank College",
+  research: "I focus on practical, discussion-driven teaching. I believe students learn best through real conversations about code — not one-sided lectures.",
+  techStack: "JavaScript, HTML, CSS, web development frameworks, databases",
+  advice: "After you get your practical marks and feedback, apply the feedback and push your project to GitHub. Build a portfolio that shows companies you can do things practically — not just theoretically. We'll make it work.",
+  email: "Via the Belgium Campus student portal or in-person after class"
+};
+
+const chatWin   = document.getElementById('chat-window');
+const chatMsgs  = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
+const chips     = document.getElementById('quickChips');
+
+document.getElementById('chat-toggle').addEventListener('click', () => chatWin.classList.toggle('open'));
+document.getElementById('chatClose').addEventListener('click',  () => chatWin.classList.remove('open'));
+
+function addMsg(text, role) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + role;
+  d.textContent = text;
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  return d;
+}
+
+function addTyping() {
+  const d = document.createElement('div');
+  d.className = 'msg bot typing-dots';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  return d;
+}
+
+async function sendChat(userMsg) {
+  if (!userMsg.trim()) return;
+  chips.style.display = 'none';
+  addMsg(userMsg, 'user');
+  chatInput.value = '';
+  const typing = addTyping();
+
+  const systemPrompt = `You are ${LECTURER.name}, ${LECTURER.title} at ${LECTURER.institution}.
+Bio: ${LECTURER.bio}
+Qualifications: ${LECTURER.qualifications}
+Teaching Philosophy: ${LECTURER.research}
+Tech Stack: ${LECTURER.techStack}
+Career Advice: ${LECTURER.advice}
+Contact: ${LECTURER.email}
+Speak in first person, warmly and professionally. Keep answers concise (2-4 sentences).
+If asked something you genuinely don't know about yourself, say so kindly.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+    const data = await res.json();
+    typing.remove();
+    const reply = data?.content?.[0]?.text || "I'm not sure how to answer that right now!";
+    addMsg(reply, 'bot');
+  } catch {
+    typing.remove();
+    addMsg("Sorry, I'm having trouble connecting right now. Please try again!", 'bot');
+  }
+}
+
+document.getElementById('chat-send').addEventListener('click', () => sendChat(chatInput.value));
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(chatInput.value); });
+
+chips.addEventListener('click', e => {
+  if (e.target.matches('.chip')) sendChat(e.target.textContent.replace(/^.{2}/, '').trim());
+});
+
+// Welcome message
+setTimeout(() => {
+  addMsg(`Hi there! 👋 I'm ${LECTURER.name}. Ask me anything about my career, modules, or advice for students!`, 'bot');
+}, 600);
+
+</script>
+</body>
 </html>
