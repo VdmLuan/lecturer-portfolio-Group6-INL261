@@ -1,180 +1,293 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ikraam Sadek Portfolio</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikraam Sadek Portfolio</title>
 
-  <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    
-  </head>
-  <body>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
  
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">IS // Portfolio</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#modules">Modules</a></li>
-    <li><a href="#facts">Fun Facts</a></li>
-    <li><a href="#quotes">Quotes</a></li>
-    <li><a href="#contact">Connect</a></li>
-  </ul>
-</nav>
+<div class="page-title">
+  <h1>ANNOTATED WIREFRAME / <span>UI MOCKUP</span></h1>
+  <p>A visual guide to the structure, content, animations, and user interactions.</p>
+</div>
  
-<!-- HERO -->
-<section id="hero">
-  <canvas id="particles-canvas"></canvas>
-  <div class="hero-grid">
-    <div class="hero-text">
-      <div class="hero-tag">// Belgium Campus · iTversity</div>
-      <h1 class="hero-name">Ikraam<br/><span>Sadek</span></h1>
-      <div class="hero-title">Junior Lecturer · Advanced Dip. Application Dev.</div>
-      <p class="hero-tagline">Educator. Developer. Adrenaline seeker.<br/>
-        <em>"We'll make it work."</em>
-      </p>
-      <a class="hero-cta" href="#about">Explore Portfolio →</a>
+<div class="three-col">
+ 
+  <!-- ══ LEFT ANNOTATIONS ══ -->
+  <div class="ann-col ann-left">
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num">1. Hero Section</div>
+      <div class="ann-block-title">First impression area with dynamic intro.</div>
+      <ul>
+        <li>Fade-in &amp; slide-up animation for the name</li>
+        <li>Particle background animation</li>
+        <li>Cartoon avatar</li>
+        <li>Clear CTA buttons</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Introduce the lecturer and create a strong impact.</div>
     </div>
-    <div class="avatar-wrap">
-      <div class="avatar-svg-container" style="animation:float 4s ease-in-out infinite;">
-        <div class="avatar-ring"></div>
-        <div class="badge-top avatar-badge">Junior Lecturer</div>
-        <div class="badge-right avatar-badge">We'll make it work 💜</div>
-        <div class="badge-bot avatar-badge">@ Belgium Campus</div>
+ 
+    <div class="ann-block" style="margin-top:12rem;">
+      <div class="ann-block-num">2. About Section</div>
+      <div class="ann-block-title">Introduce the lecturer and teaching philosophy.</div>
+      <ul>
+        <li>Typing animation for the bio</li>
+        <li>Glowing border around the card</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Build connection and show personality.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:8rem;">
+      <div class="ann-block-num">3. Modules Section</div>
+      <div class="ann-block-title">Showcase modules in an interactive way.</div>
+      <ul>
+        <li>Flip card animation on hover</li>
+        <li>Front: Module name</li>
+        <li>Back: Module details</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Provide information without clutter.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num">4. Fun Facts &amp; Superpowers</div>
+      <div class="ann-block-title">Add personality and fun!</div>
+      <ul>
+        <li>Cards animate on click/hover (fade-in, slide-up)</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Make the site more engaging and memorable.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num">5. Quote Wall</div>
+      <div class="ann-block-title">Display inspiring quotes or student feedback.</div>
+      <ul>
+        <li>Fade-in &amp; fade-out carousel transition</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Keep content dynamic and readable.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num">6. Contact Section</div>
+      <div class="ann-block-title">Make it easy for users to connect.</div>
+      <ul>
+        <li>Slide-in animation for the form</li>
+        <li>Hover scale on buttons</li>
+      </ul>
+      <div class="ann-purpose"><strong>Purpose:</strong> Encourage interaction with clear CTAs.</div>
+    </div>
+ 
+  </div><!-- /ann-left -->
+ 
+  <!-- ══ CENTER SITE ══ -->
+  <div class="site-col">
+ 
+    <!-- NAV -->
+    <nav class="s-nav">
+      <div class="s-nav-logo">IS // Portfolio</div>
+      <ul class="s-nav-links">
+        <li><a href="#s-about">About</a></li>
+        <li><a href="#s-modules">Modules</a></li>
+        <li><a href="#s-facts">Fun Facts</a></li>
+        <li><a href="#s-quotes">Quotes</a></li>
+        <li><a href="#s-contact">Connect</a></li>
+      </ul>
+      <button class="s-nav-moon">🌙</button>
+    </nav>
+ 
+    <!-- HERO -->
+    <div class="s-hero">
+      <canvas id="particles-canvas"></canvas>
+      <div class="s-hero-grid">
         <div>
-          <img src="image/profile.png" class="profile-image" alt="profile">
-      </div>
-    </div>
-  </div>
-</section>
- 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">// 01. About</div>
-    <h2 class="section-title">The person behind<br/><span>the lectures</span></h2>
-    <div class="about-grid">
-      <div>
-        <div id="typed-tagline"></div><span class="cursor-blink" id="cursor"></span>
-        <div class="about-bio reveal">
-          Mr. Ikraam Sadek is a Junior Lecturer at Belgium Campus iTversity, where he teaches a wide range of modules spanning programming, web development, software analysis, and information systems.<br/><br/>
-          He holds an <strong>Advanced Diploma in Application Development</strong> from Rosebank College — and he brings that practical, hands-on spirit into every class.<br/><br/>
-          His teaching philosophy is simple: <strong>no one-sided lectures</strong>. Classes should feel like conversations. Real discussions. Debates about code. That's where the real learning happens.
+          <div class="s-hero-subtitle">// Junior Lecturer · Belgium Campus iTversity</div>
+          <h1 class="s-hero-name">Ikraam<span>Sadek</span></h1>
+          <div class="s-hero-role">Junior Lecturer · Adv. Dip. Application Development</div>
+          <p class="s-hero-tagline">Inspiring Minds. Building Futures.<br>Through Teaching, Innovation &amp; Technology.<br><em style="font-style:normal;color:var(--accent);font-family:'Space Mono',monospace;font-size:.85rem;">"We'll make it work."</em></p>
+          <div class="s-hero-btns">
+            <a class="s-btn-p" href="#s-about">Explore My World →</a>
+            <a class="s-btn-o" href="#s-contact">Contact Me</a>
+          </div>
         </div>
-        <div class="badge-row reveal">
-          <div class="badge"><span class="badge-icon">🎓</span> Application Development</div>
-          <div class="badge"><span class="badge-icon">💜</span> Interactive Teaching</div>
-          <div class="badge"><span class="badge-icon">🚀</span> GitHub Advocate</div>
-          <div class="badge"><span class="badge-icon">⚡</span> Adrenaline Seeker</div>
-          <div class="badge"><span class="badge-icon">🛠️</span> Problem Solver</div>
-        </div>
-      </div>
-      <div class="about-stats reveal">
-        <div class="stat-card">
-          <div class="stat-label">Qualification</div>
-          <div class="stat-val">Advanced Diploma in Application Development<br/><span style="color:var(--muted);font-size:.85rem;">Rosebank College</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Modules taught this year</div>
-          <div class="stat-val" style="font-size:2rem;color:var(--accent);">9</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Superpower</div>
-          <div class="stat-val">Helpfulness — always finding a way forward.<br/><span style="color:var(--accent);font-family:'Space Mono',monospace;font-size:.85rem;">"We'll make it work."</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Teaching style</div>
-          <div class="stat-val">Discussion-driven · Engaging · Interactive</div>
+        <div>
+          <div class="s-avatar-wrap">
+            <div class="s-av-ring"></div>
+            <div class="s-badge s-badge-top">Junior Lecturer</div>
+            <div class="s-badge s-badge-bot">@ Belgium Campus</div>
+            <img src="Image lecture.png" class="s-av-img" alt="Ikraam Sadek"
+              onerror="this.style.display='none';document.getElementById('avph').style.display='flex'">
+            <div class="s-av-ph" id="avph" style="display:none;"><img src="image/profile.png" class="profile-image" alt="profile"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
  
-<!-- MODULES -->
-<section id="modules">
-  <div class="section-inner">
-    <div class="section-label">// 02. Modules & Expertise</div>
-    <h2 class="section-title">What he <span>teaches</span></h2>
-    <p style="color:var(--muted);margin-bottom:2.5rem;font-size:.95rem;">Hover over a module card to flip it and see more details.</p>
-    <div class="modules-grid" id="modules-grid"></div>
-  </div>
-</section>
- 
-<!-- FUN FACTS -->
-<section id="facts">
-  <div class="section-inner">
-    <div class="section-label">// 03. Fun Facts & Superpowers</div>
-    <h2 class="section-title">Beyond the <span>classroom</span></h2>
-    <div class="facts-grid" id="facts-grid"></div>
-  </div>
-</section>
- 
-<!-- QUOTES -->
-<section id="quotes">
-  <div class="section-inner quotes-inner">
-    <div class="section-label">// 04. Quote Wall</div>
-    <h2 class="section-title">Words he lives <span>by</span></h2>
-    <div class="quote-carousel" id="quote-carousel"></div>
-    <div class="quote-dots" id="quote-dots"></div>
-  </div>
-</section>
- 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label">// 05. Connect</div>
-    <h2 class="section-title">Get in <span>touch</span></h2>
-    <div class="contact-grid">
-      <div class="contact-card reveal">
-        <div class="contact-card-title">Office & Department</div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🏛️</div>
-          <div>
-            <div class="contact-item-label">Institution</div>
-            <div class="contact-item-val">Belgium Campus iTversity</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📚</div>
-          <div>
-            <div class="contact-item-label">Department</div>
-            <div class="contact-item-val">IT / Software Development</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🕐</div>
-          <div>
-            <div class="contact-item-label">Office Hours</div>
-            <div class="contact-item-val">Monday – Friday<br/>By appointment or after class</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">💻</div>
-          <div>
-            <div class="contact-item-label">Best way to reach</div>
-            <div class="contact-item-val">Via Belgium Campus student portal or in-person after class</div>
+    <!-- ABOUT -->
+    <div class="s-section s-section-alt" id="s-about">
+      <div class="s-sec-label">// 01. About Me</div>
+      <h2 class="s-sec-title">The person behind <span>the lectures</span></h2>
+      <div class="s-typed" id="typed-el"></div><span class="s-cursor"></span>
+      <div class="s-about-card reveal">
+        <div class="s-av-circle">IS</div>
+        <div>
+          <div class="s-card-lbl">About Me</div>
+          <div class="s-card-title">Passionate About Teaching, Learning &amp; Innovation</div>
+          <div class="s-card-bio">Mr. Ikraam Sadek is a Junior Lecturer at Belgium Campus iTversity. He holds an <strong style="color:var(--text)">Advanced Diploma in Application Development</strong> from Rosebank College, and brings that hands-on, practical spirit into every class.<br><br>His teaching approach is all about making classes <strong style="color:var(--text)">engaging and interactive</strong> — he believes the best learning happens through real discussions rather than one-sided lectures. His go-to phrase says it all: <span style="color:var(--accent);font-family:'Space Mono',monospace;">"We'll make it work."</span></div>
+          <div class="s-card-tags">
+            <span class="s-ctag">Lifelong Learner</span>
+            <span class="s-ctag">Educator</span>
+            <span class="s-ctag">Innovator</span>
+            <span class="s-ctag">Fun &amp; Professional</span>
           </div>
         </div>
       </div>
-      <div class="cta-big reveal">
-        <div class="cta-big-icon">🚀</div>
-        <div class="cta-big-title">Build your portfolio on GitHub</div>
-        <div class="cta-big-body">
-          Mr. Sadek's number one career tip: after you get your practical marks and feedback, apply the feedback and push your project to GitHub. Build a portfolio that shows companies you can do things <em>practically</em> — not just theoretically.
-        </div>
-        <a class="btn-pulse" href="https://github.com" target="_blank">Start on GitHub →</a>
+      <div class="s-stats-row reveal">
+        <div class="s-stat"><div class="s-stat-lbl">Qualification</div><div class="s-stat-val">Adv. Diploma · App Dev<br><span style="color:var(--muted);font-size:.75rem;">Rosebank College</span></div></div>
+        <div class="s-stat"><div class="s-stat-lbl">Modules this year</div><div class="s-stat-val" style="font-size:1.8rem;color:var(--accent);">11</div></div>
+        <div class="s-stat"><div class="s-stat-lbl">Superpower</div><div class="s-stat-val">Helpfulness<br><span style="color:var(--accent);font-family:'Space Mono',monospace;font-size:.72rem;">"We'll make it work."</span></div></div>
+        <div class="s-stat"><div class="s-stat-lbl">Teaching style</div><div class="s-stat-val">Discussion-driven · Engaging · Interactive</div></div>
+      </div>
+      <div class="s-badge-strip reveal">
+        <div class="s-chip">🎓 Application Dev</div>
+        <div class="s-chip">💜 Interactive Teaching</div>
+        <div class="s-chip">🚀 GitHub Advocate</div>
+        <div class="s-chip">⚡ Adrenaline Seeker</div>
+        <div class="s-chip">🛠️ Problem Solver</div>
       </div>
     </div>
-  </div>
-</section>
  
-<!-- FOOTER -->
-<footer>
-  <p>Built with 💜 by students of <span>INL261</span> · Belgium Campus iTversity · <span>2025</span></p>
-  <p style="margin-top:.5rem;font-size:.65rem;opacity:.5;">AI-assisted portfolio · All content sourced from the lecturer's social engineering session · No personal data included</p>
-</footer>
-  
+    <!-- MODULES -->
+    <div class="s-section" id="s-modules">
+      <div class="s-sec-label">// 02. Modules I Teach</div>
+      <h2 class="s-sec-title">What he <span>teaches</span></h2>
+      <p class="s-sec-sub">Hover over a card to flip it and see details.</p>
+      <div class="s-four" id="modules-grid"></div>
+    </div>
+ 
+    <!-- FUN FACTS -->
+    <div class="s-section s-section-alt" id="s-facts">
+      <div class="s-sec-label">// 03. Fun Facts &amp; Superpowers</div>
+      <h2 class="s-sec-title">Beyond the <span>classroom</span></h2>
+      <div class="s-four" id="facts-grid"></div>
+    </div>
+ 
+    <!-- GITHUB ADVICE -->
+    <div class="s-section" id="s-advice" style="background:var(--bg);">
+      <div class="s-sec-label">// 03.5. Career Advice</div>
+      <h2 class="s-sec-title">His #1 tip for <span>students</span></h2>
+      <div class="s-advice-card reveal">
+        <div class="s-advice-icon">🐙</div>
+        <div class="s-advice-body">
+          <div class="s-advice-title">Build Your GitHub Portfolio</div>
+          <div class="s-advice-text">After you've received your marks and feedback for a practical project, <strong>don't just move on</strong>. Apply that feedback, improve your project, and push it to GitHub.<br><br>Build up a portfolio of everything you've built. When companies look at your profile, they won't just see theory — they'll see <strong>proof that you can do things practically</strong>. That's what sets you apart.</div>
+          <a class="s-advice-btn" href="https://github.com" target="_blank">Start your GitHub portfolio →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- QUOTES -->
+    <div class="s-section s-quotes" id="s-quotes">
+      <div class="s-q-inner">
+        <div class="s-sec-label">// 04. Quote Wall</div>
+        <h2 class="s-sec-title">Words he lives <span>by</span></h2>
+        <div class="s-q-carousel" id="quote-carousel"></div>
+        <div class="s-q-dots" id="q-dots"></div>
+      </div>
+    </div>
+ 
+    <!-- CONTACT -->
+    <div class="s-section s-section-alt" id="s-contact">
+      <div class="s-sec-label">// 05. Let's Connect!</div>
+      <h2 class="s-sec-title">Get in <span>touch</span></h2>
+      <div class="s-contact-grid">
+        <div class="reveal">
+          <div class="s-c-title">Have a question or want to collaborate?</div>
+          <div class="s-c-desc">I'd love to hear from you. Reach out through any channel below.</div>
+          <div class="s-c-links">
+            <div class="s-c-link"><div class="s-c-icon em">✉</div><div class="s-c-val">ikraam.sadek@umb.edu.my</div></div>
+            <div class="s-c-link"><div class="s-c-icon li">in</div><div class="s-c-val">linkedin.com/in/ikraamsadek</div></div>
+            <div class="s-c-link"><div class="s-c-icon tw">𝕏</div><div class="s-c-val">@ikraam_sadek</div></div>
+            <div class="s-c-link"><div class="s-c-icon def">🏛️</div><div class="s-c-val">Belgium Campus iTversity</div></div>
+            <div class="s-c-link"><div class="s-c-icon def">🕐</div><div class="s-c-val">Mon – Fri · By appointment</div></div>
+          </div>
+        </div>
+        <div class="s-form-card reveal">
+          <div class="s-form-row">
+            <input type="text" class="s-finput" placeholder="Your Name" id="f-name" style="margin-bottom:0;">
+            <input type="email" class="s-finput" placeholder="Your Email" id="f-email" style="margin-bottom:0;">
+          </div>
+          <input type="text" class="s-finput" placeholder="Subject" id="f-subject">
+          <textarea class="s-finput" placeholder="Your Message" id="f-message" rows="4"></textarea>
+          <button class="s-btn-send" id="btn-send" onclick="sendForm()">📨 Send Message</button>
+          <div class="s-fsuccess" id="f-success">✅ Message sent! Mr. Sadek will get back to you soon.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- FOOTER -->
+    <div class="s-footer">
+      <p>Built with 💜 by students of <span>INL261</span> · Belgium Campus iTversity · <span>2025</span></p>
+      <p style="margin-top:.3rem;font-size:.58rem;opacity:.4;">AI-assisted portfolio · No personal data included</p>
+    </div>
+ 
+  </div><!-- /site-col -->
+ 
+  <!-- ══ RIGHT ANNOTATIONS ══ -->
+  <div class="ann-col ann-right">
+ 
+    <div class="ann-block" style="margin-top:3rem;">
+      <div class="ann-block-num" style="color:var(--note-pink);">Background</div>
+      <div class="ann-note"><strong>Background animation</strong> (particles) for a modern and dynamic feel.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:5rem;">
+      <div class="ann-block-num" style="color:var(--note-pink);">Avatar</div>
+      <div class="ann-note"><strong>Cartoon avatar</strong> to make the website friendly, personal, and consistent.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:14rem;">
+      <div class="ann-block-num" style="color:var(--note-green);">Typing</div>
+      <div class="ann-note"><strong>Typing animation</strong> to reveal the teaching philosophy step-by-step.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:1rem;">
+      <div class="ann-block-num" style="color:var(--note-green);">Glow</div>
+      <div class="ann-note"><strong>Glowing border</strong> to draw attention to the bio card.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:6rem;">
+      <div class="ann-block-num" style="color:var(--note-yellow);">Flip Cards</div>
+      <div class="ann-note"><strong>Flip cards</strong> reveal more details on hover for better interaction.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num" style="color:var(--note-yellow);">Animations</div>
+      <div class="ann-note"><strong>Click or hover animations</strong> (fade-in, slide-up) to reveal the facts.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num" style="color:var(--note-blue);">Carousel</div>
+      <div class="ann-note"><strong>Carousel with fade transitions</strong> to smoothly cycle through quotes.</div>
+    </div>
+ 
+    <div class="ann-block" style="margin-top:4rem;">
+      <div class="ann-block-num" style="color:var(--note-pink);">Hover</div>
+      <div class="ann-note"><strong>Hover scale and slide-in</strong> animations guide user interaction.</div>
+    </div>
+ 
+  </div><!-- /ann-right -->
+ 
+</div><!-- /three-col -->      
+ 
+
+<script src="script.js"></script>
+</body>
 </html>
+
+ 
+  
+
